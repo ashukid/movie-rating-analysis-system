@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Movie Rating Analysis</title>
+        <style>
+
+            body{
+                background: url('static/movierating/images/background.jpg') no-repeat;
+                background-size: 100%;
+            }
+        
+            .grid-container{
+                display:grid;
+                grid-template-areas: 'left header right';
+                grid-template-columns : auto auto auto;
+                grid-row-gap: 10px;
+                grid-column-gap: 10px;
+
+            }
+            .header{
+                grid-area: header;
+                margin-top: 4em;
+            }
+            input[type="text"] {
+                font-size:1em;
+            }
+
+
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="grid-container">
+
+            <div class="header">
+                <h1>Movie Rating Analysis System</h1>
+                <form action="/index" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="movie" style="width:300px; height:30px;" autofocus><br><br>
+                    <button style="font-size:1.4em;">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+    </body>
+
+</html>

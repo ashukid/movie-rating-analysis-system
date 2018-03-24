@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>Movie Rating Analysis</title>
+        <style>
+
+            body{
+                background: url('static/movierating/images/background.jpg') no-repeat;
+                background-size: 100%;
+            }
+        
+            .grid-container{
+                display:grid;
+                grid-template-areas: 'left header right';
+                grid-template-columns : auto auto auto;
+                grid-row-gap: 10px;
+                grid-column-gap: 10px;
+
+            }
+
+            * {box-sizing: border-box}
+            .header{
+                grid-area: header;
+                margin-top: 2em;
+            }
+
+            .container {
+            width: 100%;
+            background-color: #ddd;
+            }
+
+            .skills {
+            text-align: right;
+            padding-right: 20px;
+            line-height: 40px;
+            color: white;
+            }
+
+            .positive {width: {{review.pos_review}}%; background-color: #4CAF50;}
+            .negative {width: {{review.neg_review}}%; background-color: #2196F3;}
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="grid-container">
+            
+
+            <div class="header">
+
+                <button><a href="{% url 'index' %}">Go back</a></button>
+
+                <h1>Movie : {{movie.movie_name}}</h1>
+                <h4>Overview : {{details.overview}}</h4>
+                <h4>Released Date : {{details.released_date}}</h4>
+                <h4>Similar Movies : {{movie.similar_movies}}</h4>
+
+                <br><br>
+                <h2>Overall Trend</h2>
+                <p>Positive</p>
+                <div class="container">
+                    <div class="skills positive">{{review.pos_review}}%</div>
+                </div>
+
+                <p>Negative</p>
+                <div class="container">
+                    <div class="skills negative">{{review.neg_review}}%</div></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </body>
+
+</html>
