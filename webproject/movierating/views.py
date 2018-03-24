@@ -7,6 +7,7 @@ from django.shortcuts import render,redirect
 
 from movie import Movie
 from analyze import SentimentAnalyzer
+from graph import GraphPlotter
 
 # homepage of the website
 class Index(generic.View):
@@ -39,10 +40,16 @@ class Details(generic.View):
         pos_review,neg_review = analyzer.average_sentiment(label)
 
         # calling the graph class
-        
+        plot = GraphPlotter(movie)
+        user,label = plot.get_label()
+        male_pos,female_pos = plot.gender_sentiment(label,[row[1] for row in user])
+        teen_pos,young_pos,old_pos = plot.age_sentiment(label,[row[2] for row in user])
 
         movie = {'movie_name':movie_name,'similar_movies':similar_movies}
         details = {'overview':overview,'released_date':released_date}
         review = {'pos_review':int(pos_review),'neg_review':int(neg_review)}
+        gender_trend = {'male_pos':male_pos,'female_pos':female_pos}
+        age_trend = {'teen_pos':teen_pos,'young_pos':young_pos,'old_pos':old_pos}
 
-        return render(request,self.template_name,{'movie':movie,'details':details,'review':review})
+        return render(request,self.template_name,{'movie':movie,'details':details,'review':review,
+                    'gender_trend':gender_trend,'age_trend':age_trend})
