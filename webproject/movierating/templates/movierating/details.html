@@ -10,12 +10,12 @@
         
             .grid-container{
                 display:grid;
-                grid-template-areas: 'left header right';
-                grid-template-columns : 1em auto 1em;
+                grid-template-areas: 'header header header'
+                                     'g1 g2 g3';
+                grid-template-columns : 33% 33% 33%;
                 grid-template-rows: 100%;
                 grid-row-gap: 10px;
                 grid-column-gap: 10px;
-
             }
 
             * {box-sizing: border-box}
@@ -24,15 +24,25 @@
                 margin-top: 2em;
             }
 
+            .g1{
+                grid-area: g1;
+            }
+            .g2{
+                grid-area: g2;
+            }
+            .g3{
+                grid-area: g3;
+            }
+
             .container {
-            width: 80%;
+            width: 70%;
             background-color: #ddd;
             }
 
             .skills {
             text-align: right;
             padding-right: 20px;
-            line-height: 40px;
+            line-height: 20px;
             color: white;
             }
 
@@ -68,6 +78,15 @@
             }
 
         </style>
+        <script>
+        
+            function showGraph(){
+                document.getElementById('graph1').style.display="block"
+                document.getElementById('graph2').style.display="block"
+                document.getElementById('graph3').style.display="block"
+            }
+
+        </script>
     </head>
 
     <body>
@@ -86,50 +105,62 @@
 
                 <br><br>
 
-                <button style="position: relative;left:50%">Plot Graphs</button>
+                <button style="position: relative;left:50%" onclick="showGraph()">Plot Graphs</button>
+            
+            </div>
+            
 
-                <div class="graphs">
+            <div class="g1" id="graph1" style="display: none">
 
-                    <h2>Overall Trend</h2>
-                    <p>Positive</p>
-                    <div class="container">
-                        <div class="skills positive">{{review.pos_review}}%</div>
-                    </div>
-
-                    <p>Negative</p>
-                    <div class="container">
-                        <div class="skills negative">{{review.neg_review}}%</div></div>
-                    </div>
-                    
-                    <h2>Gender Wise Trend</h2>
-                    <p>Male Positive</p>
-                    <div class="container">
-                        <div class="skills male_positive">{{gender_trend.male_pos}}%</div>
-                    </div>
-
-                    <p>Female Positive</p>
-                    <div class="container">
-                        <div class="skills female_positive">{{gender_trend.female_pos}}%</div></div>
-                    </div>
-
-                    <h2>Age Wise Trend</h2>
-                    <p>Teen Positive</p>
-                    <div class="container">
-                        <div class="skills teen_positive">{{age_trend.teen_pos}}%</div>
-                    </div>
-
-                    <p>Young Positive</p>
-                    <div class="container">
-                        <div class="skills young_positive">{{age_trend.young_pos}}%</div></div>
-                    </div>
-
-                    <p>Old Positive</p>
-                    <div class="container">
-                        <div class="skills old_positive">{{age_trend.old_pos}}%</div></div>
-                    </div>
-
+                <h2>Overall Trend</h2>
+                <p>Positive</p>
+                <div class="container">
+                    <div class="skills positive">{{review.pos_review}}%</div>
                 </div>
+
+                <p>Negative</p>
+                <div class="container">
+                    <div class="skills negative">{{review.neg_review}}%</div>
+                </div>
+            
+            </div>
+
+            <div class="g2" id="graph2" style="display: none">
+
+                <h2>Gender Wise Trend</h2>
+                <p>Male Positive</p>
+                <div class="container">
+                    <div class="skills male_positive">{{gender_trend.male_pos}}%</div>
+                </div>
+
+                <p>Female Positive</p>
+                <div class="container">
+                    <div class="skills female_positive">{{gender_trend.female_pos}}%</div>
+                </div>
+
+            </div>
                 
+            <div class="g3" id="graph3" style="display: none">
+            
+                <h2>Age Wise Trend</h2>
+                <p>Teen Positive</p>
+                <div class="container">
+                    <div class="skills teen_positive">{{age_trend.teen_pos}}%</div>
+                </div>
+
+                <p>Young Positive</p>
+                <div class="container">
+                    <div class="skills young_positive">{{age_trend.young_pos}}%</div>
+                </div>
+
+                <p>Old Positive</p>
+                <div class="container">
+                    <div class="skills old_positive">{{age_trend.old_pos}}%</div>
+                </div>
+            
+            </div>
+
+                                
 
             </div>
 
