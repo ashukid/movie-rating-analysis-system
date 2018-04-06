@@ -48,8 +48,8 @@ class Details(generic.View):
         movie = {'movie_name':movie_name,'similar_movies':similar_movies}
         details = {'overview':overview,'released_date':released_date}
         review = {'pos_review':int(pos_review),'neg_review':int(neg_review)}
-        gender_trend = {'male_pos':male_pos,'female_pos':female_pos}
-        age_trend = {'teen_pos':teen_pos,'young_pos':young_pos,'old_pos':old_pos}
+        gender_trend = {'male_pos':int(male_pos),'female_pos':int(female_pos)}
+        age_trend = {'teen_pos':int(teen_pos),'young_pos':int(young_pos),'old_pos':int(old_pos)}
 
         return render(request,self.template_name,{'movie':movie,'details':details,'review':review,
                     'gender_trend':gender_trend,'age_trend':age_trend})

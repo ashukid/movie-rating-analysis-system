@@ -15,7 +15,6 @@ class Movie:
         response = requests.request("GET", url,params=self.omdb_querystring)
         response = response.json()
         self.imdbID = response["imdbID"]
-            
 
         return response["imdbID"]
 
@@ -70,11 +69,8 @@ class Movie:
         for i in range(len(results)):
             similar_movies.append(results[i]["title"])
 
-        similar_movies = ', '.join(similar_movies)
         return similar_movies
-
     
-
 
 
 
